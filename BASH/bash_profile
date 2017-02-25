@@ -1,0 +1,4 @@
+# auto source bashrc when login
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
