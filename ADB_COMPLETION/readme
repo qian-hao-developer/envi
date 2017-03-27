@@ -1,0 +1,16 @@
+
+    1.Copy and paste the adb bash completion from here on github by mbrubeck and save in a file named adb.txt or the name you prefer.
+    2.Store the file somewhere safe. Anywhere you want in your $PATH. I choose /bin but the standard file location is /usr/local/bin.
+    3.Use your favorite editor of choice (which should be vim IMHO) to edit your ~/.bashrc file.
+
+    4.Add the following lines (substitute your own path to the adb bash completion file) to the end of your ~/.bashrc file (not edit the .bashrc in sudo mode):
+
+    if [ -e /bin/adb.txt ] ; then
+      source /bin/adb.txt
+    fi
+
+    5.Save and quit. To reload your bash type:
+
+    6.source ~/.bashrc
+
+    7,Check if it works. Type adb d and press Tab to see if it autocompletes to adb devices.
