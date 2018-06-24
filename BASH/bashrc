@@ -1,35 +1,77 @@
-########  git input completion ########
-source /usr/local/etc/bash_completion.d/git-prompt.sh
-source /usr/local/etc/bash_completion.d/git-completion.bash
-#######################################
+##### reset path
+<<readme
+default path
+reference to /etc/paths
+priority:
+    /usr/local/bin
+    /usr/bin
+    /bin/usr/sbin
+    /sbin
+readme
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH
+##### custom path
+# adb
+export PATH=/Users/nekonosukiyaki/Library/Android/sdk/platform-tools:$PATH
+# repo
+export PATH=~/Archive/Tools:$PATH
 
-####### path color & display git branch name #######
-function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
+
+##### alias & functions
+alias source-bashrc='source ~/.bashrc'
+alias vi-bashrc='vi ~/.bashrc'
+alias code-bashrc='code -n ~/.bashrc'
+alias t='tmux'
+alias ex='exit'
+alias cdroot='cd ~'
+alias cdprev='cd ..'
+alias cdproj='cd ~/Archive/Projects/'
+# aosp quick mount
+function mountAndroid {
+    hdiutil attach /Volumes/My\ Passport/Mr.Developer/Mr.Home/Android/AOSP/android.dmg.sparseimage -mountpoint /Volumes/android-aosp;
 }
-function promps {
-    # change color
-    local  BLUE="\[\e[1;34m\]"
-    local  RED="\[\e[1;31m\]"
-    local  GREEN="\[\e[1;32m\]"
-    local  WHITE="\[\e[00m\]"
-    local  GRAY="\[\e[1;37m\]"
-    local  MAGENTA="\[\e[1;35m\]"
-    local  CYAN="\[\e[1;36m\]"
-    local  BLACK="\[\e[30m\]"
-    local  YELLOW="\[\e[1;33m\]"
-
-    case $TERM in
-        xterm*) TITLEBAR='\[\e]0;\W\007\]';;
-        *)      TITLEBAR="";;
-    esac
-    local BASE="\u@\h"
-    PS1="${TITLEBAR}${YELLOW}${BASE}${WHITE}:${CYAN}\w${MAGENTA}\$(parse_git_branch)${WHITE}\$${WHITE} "
+function unmountAndroid() {
+    hdiutil detach /Volumes/android-aosp;
 }
-promps
-##########################################################
+alias cdAosp='cd /Volumes/android-aosp'
+# open via vim
+vivi() {
+    vi <("$@")
+}
+# list via peco
+pe() {
+    "$@" | peco
+}
+# powerline-daemon replace
+alias powerline-replace='powerline-daemon --replace'
 
-######## ls file color ########
+##### path color & display git branch name
+#function parse_git_branch {
+#    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
+#}
+#function promps {
+#    # change color
+#    local  BLUE="\[\e[1;34m\]"
+#    local  RED="\[\e[1;31m\]"
+#    local  GREEN="\[\e[1;32m\]"
+#    local  WHITE="\[\e[00m\]"
+#    local  GRAY="\[\e[1;37m\]"
+#    local  MAGENTA="\[\e[1;35m\]"
+#    local  CYAN="\[\e[1;36m\]"
+#    local  BLACK="\[\e[30m\]"
+#    local  YELLOW="\[\e[1;33m\]"
+#
+#    case $TERM in
+#        xterm*) TITLEBAR='\[\e]0;\W\007\]';;
+#        *)      TITLEBAR="";;
+#    esac
+#    local BASE="\u@\h"
+#    PS1="${TITLEBAR}${YELLOW}${BASE}${WHITE}:${CYAN}\w${MAGENTA}\$(parse_git_branch)${WHITE}\$${WHITE} "
+#}
+#promps
+
+
+##### ls file color
 <<readme
 file defination
 ==========================================================
@@ -75,7 +117,50 @@ default LSCOLORS: exfxcxdxbxegedabagacad
     ad –> directory without sticky / black / brown
 ===================================================
 readme
-
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
-###############################
+
+
+##### change default limit on the number of simultaneous file descriptors open
+##### set the number of open files to be 1024
+ulimit -S -n 1024
+
+
+##### for sed error
+export LANG="C"
+export LC_ALL="C"
+
+
+#####  git input completion
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+source /usr/local/etc/bash_completion.d/git-completion.bash
+
+
+#####  adb completion
+if [ -e /usr/local/bin/adb_completion.txt ]; then
+    source /usr/local/bin/adb_completion.txt
+fi
+
+
+##### peco ctrl-r link history
+peco-select-history() {
+    declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
+    READLINE_LINE="$l"
+    READLINE_POINT=${#l}
+}
+bind -x '"\C-r": peco-select-history'
+
+
+##### groovy
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
+
+##### powerline source
+powerline-daemon -q
+export LC_ALL="en_us.UTF-8"
+source /usr/local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+
+
+##### google cloud completion
+source /Users/nekonosukiyaki/Archive/Tools/google-cloud-sdk/completion.bash.inc
+source /Users/nekonosukiyaki/Archive/Tools/google-cloud-sdk/path.bash.inc
