@@ -11,3 +11,8 @@
 # markdown
 1. Table Formatter
 2. Markdown All in One
+
+# others
+1. sort line (can sort and make list unique)
+2. PlantUML
+3. hexdump for VSCode
