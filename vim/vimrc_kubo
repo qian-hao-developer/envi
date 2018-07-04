@@ -1,0 +1,485 @@
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+if has("mac")
+  set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+  let g:load_path='~/.vim/dein'
+elseif has("unix")
+  set runtimepath+=/home/ps152-dev/.vim/dein/repos/github.com/Shougo/dein.vim
+  let g:load_path='/home/ps152-dev/.vim/dein'
+endif
+
+let g:dein#install_process_timeout = 600
+
+" Required:
+if dein#load_state(g:load_path)
+  call dein#begin(g:load_path)
+
+  " Let dein manage dein
+  " Required:
+  if has("mac")
+    call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+  elseif has("unix")
+    call dein#add('/home/ps152-dev/.vim/dein/repos/github.com/Shougo/dein.vim')
+  endif
+
+  " Add or remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/neoyank.vim')
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+  "call dein#add('Yggdroot/indentLine')
+  "let g:indentLine_bgcolor_term = 202
+  "let g:indentLine_bgcolor_gui = '#FF5F00'
+  call dein#add('nathanaelkane/vim-indent-guides')
+  call dein#add('sjl/gundo.vim')
+  call dein#add('ujihisa/unite-colorscheme')
+  call dein#add('szw/vim-tags')
+  call dein#add('tpope/vim-surround')
+  call dein#add('vim-jp/autofmt')
+  call dein#add('scrooloose/nerdcommenter')
+  call dein#add('hsanson/vim-android')
+  call dein#add('vim-scripts/DirDiff.vim')
+  call dein#add('vim-scripts/EnhCommentify.vim')
+  call dein#add('vim-scripts/sudo.vim')
+  call dein#add('vim-scripts/Align')
+  call dein#add('regedarek/ZoomWin')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('gregsexton/gitv')
+  call dein#add('kshenoy/vim-signature')
+  call dein#add('mattesgroeger/vim-bookmarks')
+  call dein#add('leafcage/yankround.vim')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('bronson/vim-trailing-whitespace')
+  "autocmd BufWritePre * :FixWhitespace "余分なスペースを保存時に自動削除する設定
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('itchyny/lightline.vim')
+  call dein#add('maximbaz/lightline-ale')
+  call dein#add('thinca/vim-quickrun')
+  call dein#add('kannokanno/previm')
+  call dein#add('haya14busa/vim-open-googletranslate')
+  call dein#add('tyru/open-browser.vim')
+  call dein#add('haya14busa/vim-edgemotion')
+  call dein#add('fatih/vim-go')
+  call dein#add('lambdalisue/gina.vim')
+  call dein#add('cocopon/colorswatch.vim')
+  call dein#add('cocopon/pgmnt.vim')
+  call dein#add('kannokanno/previm')
+  " Syntax checking
+  if has('job') && has('channel') && has('timers')
+    call dein#add('w0rp/ale')
+  else
+    call dein#add('vim-syntastic/syntastic')
+  endif
+  call dein#add('mattn/webapi-vim')
+  call dein#add('heavenshell/vim-slack')
+  call dein#add('haya14busa/incsearch.vim')
+  call dein#add('haya14busa/incsearch-fuzzy.vim')
+  call dein#add('haya14busa/incsearch-migemo.vim')
+  call dein#add('Shougo/context_filetype.vim')
+  call dein#add('osyo-manga/vim-precious')
+  call dein#add('vim-scripts/gtags.vim')
+  call dein#add('jsfaint/gen_tags.vim')
+  call dein#add('mattn/vim-fz')
+  call dein#add('ryanoasis/vim-devicons')
+
+  " colorscheme
+  call dein#add('altercation/vim-colors-solarized') " solarized
+  call dein#add('croaker/mustang-vim')              " mustang
+  call dein#add('jeffreyiacono/vim-colors-wombat')  " wombat
+  call dein#add('nanotech/jellybeans.vim')          " jellybeans
+  call dein#add('vim-scripts/Lucius')               " lucius
+  call dein#add('vim-scripts/Zenburn')              " zenburn
+  call dein#add('mrkn/mrkn256.vim')                 " mrkn256
+  call dein#add('jpo/vim-railscasts-theme')         " railscasts
+  call dein#add('therubymug/vim-pyte')              " pyte
+  call dein#add('tomasr/molokai')                   " molokai
+  call dein#add('chriskempson/vim-tomorrow-theme')  " tomorrow night
+  call dein#add('vim-scripts/twilight')             " twilight
+  call dein#add('w0ng/vim-hybrid')                  " hybrid
+  call dein#add('freeo/vim-kalisi')                 " kalisi
+  call dein#add('morhetz/gruvbox')                  " gruvbox
+  call dein#add('toupeira/vim-desertink')           " desertink
+  call dein#add('sjl/badwolf')                      " badwolf
+  call dein#add('itchyny/landscape.vim')            " landscape
+  call dein#add('joshdick/onedark.vim')             " onedark in atom
+  call dein#add('gosukiwi/vim-atom-dark')           " vim atom dark
+  call dein#add('cocopon/iceberg.vim')              " iceberg
+  call dein#add('vim-scripts/wombat256.vim')        " wombat256
+  call dein#add('chriskempson/base16-vim')          " base16-vim
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+if dein#tap('incsearch.vim')
+  map / <Plug>(incsearch-forward)
+  map ? <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+endif
+
+if dein#tap('incsearch-fuzzy.vim')
+  map z/ <Plug>(incsearch-fuzzy-/)
+  map z? <Plug>(incsearch-fuzzy-?)
+  map zg/ <Plug>(incsearch-fuzzy-stay)
+endif
+
+if dein#tap('incsearch-migemo.vim')
+  map m/ <Plug>(incsearch-migemo-/)
+  map m? <Plug>(incsearch-migemo-?)
+  map mg/ <Plug>(incsearch-migemo-stay)
+endif
+
+if dein#tap('vim-edgemotion')
+  map <C-j> <Plug>(edgemotion-j)
+  map <C-k> <Plug>(edgemotion-k)
+endif
+
+if dein#tap('yankround.vim')
+  nmap p <Plug>(yankround-p)
+  xmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap gp <Plug>(yankround-gp)
+  xmap gp <Plug>(yankround-gp)
+  nmap gP <Plug>(yankround-gP)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
+endif
+
+if dein#tap('neocomplete.vim')
+  let g:neocomplete#enable_at_startup = 1
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+endif
+
+if dein#tap('syntastic')
+  let g:syntastic_enable_signs=1
+  let g:syntastic_auto_loc_list=2
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['python']}
+
+  let g:syntastic_error_symbol='✗'
+  let g:syntastic_style_error_symbol = '✗'
+  let g:syntastic_warning_symbol = '⚠'
+  let g:syntastic_style_warning_symbol = '⚠'
+
+  let g:syntastic_python_checkers = ['flake8']
+
+  augroup AutoSyntastic
+      autocmd!
+      autocmd InsertLeave,TextChanged * call s:syntastic()
+  augroup END
+  function! s:syntastic()
+      w
+      SyntasticCheck
+  endfunction
+endif
+
+if dein#tap('ale')
+  let g:ale_sign_column_always = 1
+  let g:ale_sign_error = "\uf05e"
+  let g:ale_sign_warning = "\uf071"
+  let g:ale_statusline_format = ["\uf05e %d", "\uf071 %d", "\uf00c OK"]
+  let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_warning_str = 'W'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+endif
+
+if dein#tap('lightline-ale')
+  let g:lightline#ale#indicator_checking = "\uf110"
+  let g:lightline#ale#indicator_warnings = "\uf071"
+  let g:lightline#ale#indicator_errors = "\uf05e"
+  let g:lightline#ale#indicator_ok = "\uf00c"
+endif
+
+if dein#tap('DirDiff.vim')
+  let g:DirDiffExcludes = ".git"
+endif
+
+if dein#tap('gitv')
+  autocmd FileType git :setlocal foldlevel=99
+endif
+
+if dein#tap('vim-android')
+  if has("mac")
+  elseif has("unix")
+    let g:android_sdk_path = "/home/ps152-dev/android-sdk-linux"
+    let g:gradle_path = "/home/ps152-dev/android-studio/plugins/android/lib/templates/gradle/wrapper"
+  endif
+endif
+
+if dein#tap('vim-indent-guides')
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_start_level = 2
+  let g:indent_guides_guide_size = 1
+endif
+
+if dein#tap('ryanoasis/vim-devicons')
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+endif
+
+if dein#tap('lightline.vim')
+  set noshowmode
+  let g:lightline = {
+        \ 'colorscheme': 'gruvbox',
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'fugitive', 'filename' ] ],
+        \   'right': [ [ 'percent', 'lineinfo' ],
+        \              [ 'fileformat', 'fileencoding', 'filetype' ], ],
+        \ },
+        \ 'component': {
+        \   'lineinfo': '%3l/%L:%-3v',
+        \ },
+        \ 'component_function': {
+        \   'fugitive': 'LightLineFugitive',
+        \   'readonly': 'LightLineReadonly',
+        \   'modified': 'LightLineModified',
+        \   'filename': 'LightLineFilename',
+        \   'filetype': 'LightLineFiletype',
+        \   'fileformat': 'LightLineFileformat',
+        \   'ale': 'ALEGetStatusLine',
+        \ },
+        \ 'separator': { 'left': '', 'right': '' },
+        \ 'subseparator': { 'left': '', 'right': '' }
+        \ }
+  if dein#tap('lightline-ale')
+    let g:lightline.component_expand = {
+        \   'linter_checking': 'lightline#ale#checking',
+        \   'linter_warnings': 'lightline#ale#warnings',
+        \   'linter_errors': 'lightline#ale#errors',
+        \   'linter_ok': 'lightline#ale#ok',
+        \ }
+    let g:lightline.component_type = {
+        \   'linter_checking': 'left',
+        \   'linter_warnings': 'warning',
+        \   'linter_errors': 'error',
+        \   'linter_ok': 'left',
+        \ }
+    endif
+    let g:lightline.active.right = [ [ 'percent', 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], ]
+  let g:lightline.inactive = g:lightline.active
+
+  function! LightLineModified()
+      if &filetype == "help"
+          return ""
+      elseif &modified
+          return "+"
+      elseif &modifiable
+          return ""
+      else
+          return ""
+      endif
+  endfunction
+
+  function! LightLineReadonly()
+      if &filetype == "help"
+          return ""
+      elseif &readonly
+          return ""
+      else
+          return ""
+      endif
+  endfunction
+
+  function! LightLineFugitive()
+      if exists("*fugitive#head")
+          let _ = fugitive#head()
+          return strlen(_) ? ''._ : ''
+      endif
+      return ''
+  endfunction
+
+  function! LightLineFilename()
+      return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+                  \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                  \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+  endfunction
+
+  function! LightLineFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+  endfunction
+
+  function! LightLineFileformat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+  endfunction
+endif
+
+"End dein Scripts-------------------------
+
+" Python settings
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd FileType python setl tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+" Text settings
+autocmd FileType text setl tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+" Vim FIle settings
+autocmd FileType vim setl tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+" Vim settings
+set number
+set background=dark
+colorscheme gruvbox
+set t_Co=256
+set t_BE=
+if has("mac")
+  set guifont=Ricty\ Regular:h18
+  set guifontwide=Ricty\ Regular:h18
+elseif has("unix")
+  set guifont=Cica\ 12
+  set guifontwide=Cica\ 12
+endif
+set encoding=utf-8
+set fileencodings=utf-8,cp932
+set fileformats=unix,dos,mac
+set formatoptions+=mMj
+set ambiwidth=double
+set display+=lastline
+set noswapfile
+set nowritebackup
+set nobackup
+set autoread
+set confirm
+set hidden
+set backspace=indent,eol,start
+set cursorline
+set cursorcolumn
+set laststatus=2
+set cmdheight=2
+set helpheight=999
+set vb t_vb=
+set novisualbell
+set clipboard=unnamedplus,autoselect
+set list
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set ruler
+set showmatch
+set matchtime=1
+set wrap
+set wrapscan
+set textwidth=0
+set shiftround
+set infercase
+set virtualedit=all
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set tabstop=4
+set shiftwidth=4
+set expandtab
+"set noexpandtab
+set autoindent
+set softtabstop=4
+set smartindent
+set wildmenu wildmode=list:longest,full
+set history=10000
+set diffopt+=vertical
+
+" mouse control
+if has('mouse')
+  set mouse=a
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  elseif v:version > 703 || v:version is 703 && has('patch632')
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
+endif
+
+" paste clipboard
+if &term =~ "xterm"
+  let &t_SI .= "\e[?2004h"
+  let &t_EI .= "\e[?2004l"
+  let &pastetoggle = "\e[201~"
+
+  function XTermPasteBegin(ret)
+    set paste
+    return a:ret
+  endfunction
+
+  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
+
+" mapping
+noremap ; :
+
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <silent> jj <ESC>
+inoremap <silent> っj <ESC>
+
+nnoremap <ESC><ESC> :nohlsearch<CR>
+nnoremap Y y$
+nnoremap + <C-a>
+nnoremap - <C-x>
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up>   gk
+nnoremap あ a
+nnoremap い i
+nnoremap う u
+nnoremap お o
+nnoremap っd dd
+nnoremap っy yy
+
+"tnoremap <Esc> <C-w><S-n>
+
+" ctags
+set tags=./tags;
+nnoremap <C-]> g<C-]>
+nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+
+" gtags
+map <C-h> :Gtags -f %<CR>
+map <C-g> :GtagsCursor<CR>
+map <C-n> :cn<CR>
+map <C-p> :cp<CR>
+
+if has('persistent_undo')
+  set undodir=./.vimundo,~/.vimundo
+  augroup vimrc-undofile
+    autocmd!
+    autocmd BufReadPre ~/* setlocal undofile
+  augroup END
+endif
+
+" show zenkaku space
+function! ZenkakuSpace()
+  highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+endfunction
+
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
+  augroup END
+  call ZenkakuSpace()
+endif
+
