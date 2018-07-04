@@ -14,7 +14,17 @@ Plugin 'morhetz/gruvbox'    " for gruvbox scheme
 Plugin 'vim-airline/vim-airline'    " for airline status bar
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'     " for git status
-"Plugin 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'	" for completion    attention:this need to run install.py at .vim/bundle/ycmd
+Plugin 'shougo/vimshell.vim'	" for vimshell
+Plugin 'Shougo/vimproc.vim'	" for vimshell's env
+Plugin 'taglist.vim'    " for taglist
+Plugin 'scrooloose/nerdcommenter'	" commenter
+Plugin 'w0rp/ale'	" asynchronous lint engine
+Plugin 'godlygeek/tabular'	" code format
+Plugin 'mileszs/ack.vim'	" search engine - ag's alternative  attention:this need to install ack lib on OS
+Plugin 'scrooloose/nerdtree'    " directory tree display
+Plugin 'airblade/vim-gitgutter'     " show git diff status
+Plugin 'thinca/vim-quickrun'    " preview code-running
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -30,6 +40,20 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" vim own
+syntax on   " highlight
+set number  " line number
+set list    " show invisible character
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%  " define invisible character display
+set clipboard=unnamed,autoselect   " copy to clipboard
+set autoindent
+set smarttab
+set smartindent
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set wildmode=list:longest   " tab completion as bash
 
 " gruvbox
 colorscheme gruvbox
@@ -66,6 +90,15 @@ set showtabline=2
 "set noshowmode
 "set ttimeoutlen=50  " less duration time when mode changing
 
+" VimShell
+let g:vimshell_editor_command = '/usr/local/bin/mvim'
+let g:vimshell_prompt = "$ "
+let g:vimshell_secondary_prompt = '> '
+let g:vimshell_user_prompt = 'getcwd()'
 
-" code keyword highlight
-syntax on
+" ale grammer check
+" Display Setting
+let g:ale_sign_error = '✖︎'
+let g:ale_sign_warning = '⚡︎'
+let g:ale_echo_msg_format = '[%linter%]%code: %%s'
+let g:ale_set_highlights = 0
