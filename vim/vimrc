@@ -54,6 +54,7 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 set wildmode=list:longest   " tab completion as bash
+set ignorecase  " caps ignore
 
 " gruvbox
 colorscheme gruvbox
