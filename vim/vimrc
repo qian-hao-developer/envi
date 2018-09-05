@@ -26,6 +26,9 @@ Plugin 'scrooloose/nerdtree'    " directory tree display
 Plugin 'airblade/vim-gitgutter'     " show git diff status
 Plugin 'thinca/vim-quickrun'    " preview code-running
 Plugin 'dag/vim-fish'   " for fish file highlight
+Plugin 'kergoth/vim-bitbake'    " for bitbake
+Plugin 'junegunn/fzf'
+Plugin 'vim-scripts/gtags.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
