@@ -1,0 +1,6 @@
+set line /dev/ttyUSB-kermit
+set speed 115200
+set stop-bits 1
+set flow-control none
+set parity none
+set carrier-watch off
