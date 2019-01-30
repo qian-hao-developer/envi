@@ -9,3 +9,6 @@ swap-panel -t <target-panel-num>
 # refresh panel
 prefix :
 respawn-panel -k
+
+# reload config
+:source-file ~/.tmux.conf
