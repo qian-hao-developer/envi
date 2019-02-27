@@ -29,3 +29,4 @@ Todo+
 Vim (key binding)
 vimL
 vscode-icons
+systemd-unit-file
