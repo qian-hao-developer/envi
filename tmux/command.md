@@ -1,3 +1,6 @@
+# man page
+http://man.openbsd.org/OpenBSD-current/man1/tmux.1
+
 # send command to all panel
 prefix :
 setw synchronize-panel on
@@ -9,6 +12,10 @@ swap-panel -t <target-panel-num>
 # refresh panel
 prefix :
 respawn-panel -k
+## restart with current path
+respawn-panel -k -c .
+## window
+respawn-window ...(as above)
 
 # reload config
 :source-file ~/.tmux.conf
