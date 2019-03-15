@@ -22,14 +22,16 @@ Plugin 'scrooloose/nerdcommenter'	" commenter
 Plugin 'w0rp/ale'	" asynchronous lint engine
 Plugin 'godlygeek/tabular'	" code format
 Plugin 'mileszs/ack.vim'	" search engine - ag's alternative  attention:this need to install ack lib on OS
-Plugin 'rking/ag.vim'       " silver_searcher -- ag
 Plugin 'scrooloose/nerdtree'    " directory tree display
 Plugin 'airblade/vim-gitgutter'     " show git diff status
 Plugin 'thinca/vim-quickrun'    " preview code-running
 Plugin 'dag/vim-fish'   " for fish file highlight
-Plugin 'kergoth/vim-bitbake'    " for bitbake
+Plugin 'kergoth/vim-bitbake'    " for bitbake or yocto
 Plugin 'junegunn/fzf'
 Plugin 'vim-scripts/gtags.vim'
+Plugin 'rking/ag.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
