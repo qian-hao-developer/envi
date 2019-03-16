@@ -15,7 +15,6 @@ Plugin 'vim-airline/vim-airline'    " for airline status bar
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'     " for git status
 Plugin 'Valloric/YouCompleteMe'	" for completion    attention:this need to run install.py at .vim/bundle/ycmd
-Plugin 'shougo/vimshell.vim'	" for vimshell
 Plugin 'Shougo/vimproc.vim'	" for vimshell's env
 Plugin 'taglist.vim'    " for taglist
 Plugin 'scrooloose/nerdcommenter'	" commenter
@@ -98,18 +97,9 @@ set showtabline=2
 "set noshowmode
 "set ttimeoutlen=50  " less duration time when mode changing
 
-" VimShell
-let g:vimshell_editor_command = '/usr/local/bin/mvim'
-let g:vimshell_prompt = "$ "
-let g:vimshell_secondary_prompt = '> '
-let g:vimshell_user_prompt = 'getcwd()'
-
 " ale grammer check
 " Display Setting
 let g:ale_sign_error = '✖︎'
 let g:ale_sign_warning = '⚡︎'
 let g:ale_echo_msg_format = '[%linter%]%code: %%s'
 let g:ale_set_highlights = 0
-
-" ycmd
-"let g:ycm_server_python_interpreter="/usr/local/bin/python3"
