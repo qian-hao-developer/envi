@@ -10,27 +10,32 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'morhetz/gruvbox'    " for gruvbox scheme
-Plugin 'vim-airline/vim-airline'    " for airline status bar
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'     " for git status
-Plugin 'Valloric/YouCompleteMe'	" for completion    attention:this need to run install.py at .vim/bundle/ycmd
-Plugin 'Shougo/vimproc.vim'	" for vimshell's env
-Plugin 'taglist.vim'    " for taglist
-Plugin 'scrooloose/nerdcommenter'	" commenter
-Plugin 'w0rp/ale'	" asynchronous lint engine
-Plugin 'godlygeek/tabular'	" code format
-Plugin 'mileszs/ack.vim'	" search engine - ag's alternative  attention:this need to install ack lib on OS
-Plugin 'scrooloose/nerdtree'    " directory tree display
-Plugin 'airblade/vim-gitgutter'     " show git diff status
-Plugin 'thinca/vim-quickrun'    " preview code-running
-Plugin 'dag/vim-fish'   " for fish file highlight
-Plugin 'kergoth/vim-bitbake'    " for bitbake or yocto
-Plugin 'junegunn/fzf'
-Plugin 'vim-scripts/gtags.vim'
-Plugin 'rking/ag.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
+Plugin 'morhetz/gruvbox'                    " for gruvbox scheme
+Plugin 'vim-airline/vim-airline'            " for airline status bar
+Plugin 'vim-airline/vim-airline-themes'     " for airline status
+Plugin 'tpope/vim-fugitive'                 " for git status
+Plugin 'Valloric/YouCompleteMe'             " for completion    attention:this need to run install.py at .vim/bundle/ycmd
+Plugin 'Shougo/vimproc.vim'                 " background runner, for vimshell, quick-run, etc
+Plugin 'taglist.vim'                        " for taglist                                                                                               # use Tlist
+Plugin 'scrooloose/nerdcommenter'           " commenter                                                                                                 # use <Leader>c<space>/<Leader>ci
+Plugin 'w0rp/ale'                           " asynchronous lint engine
+Plugin 'godlygeek/tabular'                  " table format
+Plugin 'mileszs/ack.vim'                    " search engine - need to install ack lib on OS
+Plugin 'scrooloose/nerdtree'                " directory tree display                                                                                    # use NERDTree,NERDTreeToggle
+Plugin 'airblade/vim-gitgutter'             " show git diff status
+Plugin 'thinca/vim-quickrun'                " preview code-running
+Plugin 'dag/vim-fish'                       " for fish file highlight
+Plugin 'kergoth/vim-bitbake'                " for bitbake or yocto
+Plugin 'junegunn/fzf'                       " like peco
+Plugin 'vim-scripts/gtags.vim'              " gtags
+Plugin 'rking/ag.vim'                       " silver search, more speedy than ack
+Plugin 'tpope/vim-surround'                 " automatically insert ',{,etc                                                                              # use ysiw(  yang surround inside word {
+Plugin 'tpope/vim-repeat'                   " extension for repeat cmd . (support vim-surround)
+Plugin 'honza/vim-snippets'                 " auto complete or insert code format (snippet engine)
+Plugin 'sirver/ultisnips'                   " snippet
+Plugin 'terryma/vim-multiple-cursors'       " multi cursor
+Plugin 'plasticboy/vim-markdown'            " markdown highlight
+Plugin 'janko-m/vim-test'                   " in file test (need file coded use test framework)                                                         # use TestFile
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -76,8 +81,10 @@ nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 " airline
 let g:airline_theme = 'gruvbox'
 let g:airline#extensions#tabline#enabled = 1    " enable tab
-nmap <C-p> <Plug>AirlineSelectPrevTab
-nmap <C-n> <Plug>AirlineSelectNextTab
+" nmap <C-p> <Plug>AirlineSelectPrevTab
+" nmap <C-n> <Plug>AirlineSelectNextTab
+nmap <Leader>p <Plug>AirlineSelectPrevTab
+nmap <Leader>n <Plug>AirlineSelectNextTab
 let g:airline#extensions#tabline#buffer_idx_mode = 1    " show number for tab
 set ttimeoutlen=50  " less duration time when mode changing
 let g:airline_powerline_fonts = 1   " enable powerline fonts
@@ -103,3 +110,15 @@ let g:ale_sign_error = '✖︎'
 let g:ale_sign_warning = '⚡︎'
 let g:ale_echo_msg_format = '[%linter%]%code: %%s'
 let g:ale_set_highlights = 0
+
+" NERDTree
+" nnoremap <C-o> :NERDTreeToggle<CR>
+" nnoremap <C-t> :NERDTree<CR>
+nmap <Leader>o :NERDTreeToggle<CR>
+nmap <Leader>t :NERDTree<CR>
+
+" ultisnpis
+" because tab used by YCM, don't use tab key-bind
+let g:UltiSnipsExpandTrigger="<Leader><tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
