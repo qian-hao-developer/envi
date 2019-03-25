@@ -36,6 +36,7 @@ Plugin 'sirver/ultisnips'                   " snippet
 Plugin 'terryma/vim-multiple-cursors'       " multi cursor
 Plugin 'plasticboy/vim-markdown'            " markdown highlight
 Plugin 'janko-m/vim-test'                   " in file test (need file coded use test framework)                                                         # use TestFile
+Plugin 'https://github.com/qian-hao-developer/vim-highlight.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
