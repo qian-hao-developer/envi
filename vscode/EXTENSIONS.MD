@@ -1,8 +1,8 @@
 bitbake
 Bookmarks
 Bracket Pair Colorizer
-C++Intellisense
 C/C++
+C++Intellisense
 CMake Tools
 Code Runner
 DeviceTree
@@ -11,6 +11,7 @@ Git Blame
 Git History
 GitLens
 gnu global (not vscode extension)
+Graphviz Preview
 Gruvbox Themes
 hexdump for VSCode
 Language Support for Java(TM) by Red Hat
@@ -23,10 +24,10 @@ Python
 Regex Previewer
 setting sync
 sort line (can sort and make list unique)
+systemd-unit-file
 Table Formatter
 TODO Highlight
 Todo+
 Vim (key binding)
 vimL
 vscode-icons
-systemd-unit-file
