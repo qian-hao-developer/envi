@@ -36,7 +36,9 @@ Plugin 'sirver/ultisnips'                   " snippet
 Plugin 'terryma/vim-multiple-cursors'       " multi cursor
 Plugin 'plasticboy/vim-markdown'            " markdown highlight
 Plugin 'janko-m/vim-test'                   " in file test (need file coded use test framework)                                                         # use TestFile
-Plugin 'https://github.com/qian-hao-developer/vim-highlight.git'
+Plugin 'ctrlpvim/ctrlp.vim'                 " file search
+Plugin 'git@github.com:qian-hao-developer/vim-highlight.git'
+Plugin 'git@github.com:qian-hao-developer/vim-customize.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,6 +69,8 @@ set shiftwidth=4
 set tabstop=4
 set wildmode=list:longest   " tab completion as bash
 set ignorecase  " caps ignore
+set incsearch   " preview search when typing
+set nowrapscan  " search will stop at bottom
 
 " gruvbox
 colorscheme gruvbox
