@@ -19,3 +19,6 @@ respawn-window ...(as above)
 
 # reload config
 :source-file ~/.tmux.conf
+
+# resize layout to equal size
+prefix E
