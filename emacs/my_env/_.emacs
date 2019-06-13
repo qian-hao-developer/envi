@@ -23,3 +23,16 @@
 
 ;; 警告音もフラッシュも全て無効(警告音が完全に鳴らなくなるので注意)
 (setq ring-bell-function 'ignore)
+
+;; startup customize
+(setq initial-frame-alist
+    (append (list
+            ;; startup frame position
+                    '(top . 0)
+                            '(left . 1060)
+                                    ;; size
+                                            '(width . 120)
+                                                    '(height . 60)
+                                                        )
+    initial-frame-alist))
+(setq default-frame-alist initial-frame-alist)
