@@ -37,6 +37,7 @@ Plugin 'terryma/vim-multiple-cursors'       " multi cursor
 Plugin 'plasticboy/vim-markdown'            " markdown highlight
 Plugin 'janko-m/vim-test'                   " in file test (need file coded use test framework)                                                         # use TestFile
 Plugin 'ctrlpvim/ctrlp.vim'                 " file search
+Plugin 'zxqfl/tabnine-vim'                  " tabnine auto completion
 Plugin 'git@github.com:qian-hao-developer/vim-highlight.git'
 Plugin 'git@github.com:qian-hao-developer/vim-customize.git'
 
