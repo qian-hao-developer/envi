@@ -22,3 +22,8 @@ respawn-window ...(as above)
 
 # resize layout to equal size
 prefix E
+
+# swap window
+## swap left for 5 windows
+prefix :
+swap-window -t -5
