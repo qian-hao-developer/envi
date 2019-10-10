@@ -18,6 +18,7 @@ gnu global (not vscode extension)
 Graphviz Preview
 Gruvbox Themes
 hexdump for VSCode
+Increment Selection
 Language Support for Java(TM) by Red Hat
 Markdown All in One
 Partial Diff
