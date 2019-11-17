@@ -1,4 +1,4 @@
-import sys, getopt, os, re, shutil, imp
+import sys, getopt, os, re, shutil, imp, datetime
 from enum import Enum
 from tqdm import tqdm
 
@@ -6,7 +6,9 @@ DEBUG = False
 
 COLLECTION_ROOT = "/volume1/collection"
 COMIC_ROOT = COLLECTION_ROOT + "/comic"
-COMIC_BACKUP = "backup"
+COMIC_DATA = ".."
+COMIC_BACKUP = os.path.join(COMIC_DATA, "backup")
+COMIC_LOG = os.path.join(COMIC_DATA, "log")
 
 list_file = []
 
@@ -50,6 +52,8 @@ def prepare_file_info():
         print("[ERROR]: root path not exist, path = %s" % COMIC_ROOT)
         print("[ERROR]: exit")
         sys.exit(1)
+    reg = 0
+    unreg = 0
     file_list = [f for f in os.listdir(COMIC_ROOT) if os.path.isfile(os.path.join(COMIC_ROOT, f))]
     for f in file_list:
         ff = FILE(f, "%s/%s" % (COMIC_ROOT, f))
@@ -58,9 +62,11 @@ def prepare_file_info():
             ff.author = m.group(1)
             ff.status = STATUS.RECOGNIZED
             list_file.append(ff)
+            reg = reg + 1
         else:
             ff.status = STATUS.UNRECOGNIZED
             list_file.append(ff)
+            unreg = unreg + 1
             continue
     print("###### unrecognized files:")
     outnone = True
@@ -73,6 +79,7 @@ def prepare_file_info():
     if outnone:
         print("NONE")
     print("######")
+    return reg, unreg
 
 def run(dry):
     global DEBUG, COMIC_ROOT, COMIC_BACKUP
@@ -88,8 +95,20 @@ def run(dry):
         sys.exit(1)
     if DEBUG:
         print("[DEBUG]: dry = %s" % dry)
+    reg, unreg = prepare_file_info()
+    if reg == 0:
+        print("[INFO]: no recognized file, over")
+        return
     print("================== %sRUN ==================" % ("DRY " if dry else ""))
-    prepare_file_info()
+    os.makedirs(os.path.join(COMIC_ROOT, COMIC_LOG), exist_ok=True)
+    log_file_name = "log_comic_%s_%s.txt" % (datetime.datetime.now().strftime('%Y%m%d'), datetime.datetime.now().strftime('%H%M%S'))
+    log_file = os.path.join(COMIC_ROOT, COMIC_LOG, log_file_name)
+    with open(log_file, 'w') as f:
+        f.write("total: %s\n" % len(list_file))
+        f.write("recognized: %s\n" % reg)
+        f.write("unrecognized: %s\n" % unreg)
+        f.write("==================")
+        f.write('\n\n')
     bar = tqdm(total=len(list_file))
     for i in list_file:
         do_mkdir = False
@@ -120,6 +139,9 @@ def run(dry):
         if do_move:
             todo += i.author
         msg = re.sub('@TODO_REPLACE@', todo_replace, todo)
+        with open(log_file, 'a') as f:
+            f.write(msg)
+            f.write('\n')
         bar.clear()
         print(msg)
         bar.display()
