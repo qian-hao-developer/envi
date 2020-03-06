@@ -100,15 +100,16 @@ def run(dry):
         print("[INFO]: no recognized file, over")
         return
     print("================== %sRUN ==================" % ("DRY " if dry else ""))
-    os.makedirs(os.path.join(COMIC_ROOT, COMIC_LOG), exist_ok=True)
-    log_file_name = "log_comic_%s_%s.txt" % (datetime.datetime.now().strftime('%Y%m%d'), datetime.datetime.now().strftime('%H%M%S'))
-    log_file = os.path.join(COMIC_ROOT, COMIC_LOG, log_file_name)
-    with open(log_file, 'w') as f:
-        f.write("total: %s\n" % len(list_file))
-        f.write("recognized: %s\n" % reg)
-        f.write("unrecognized: %s\n" % unreg)
-        f.write("==================")
-        f.write('\n\n')
+    if not dry:
+        os.makedirs(os.path.join(COMIC_ROOT, COMIC_LOG), exist_ok=True)
+        log_file_name = "log_comic_%s_%s.txt" % (datetime.datetime.now().strftime('%Y%m%d'), datetime.datetime.now().strftime('%H%M%S'))
+        log_file = os.path.join(COMIC_ROOT, COMIC_LOG, log_file_name)
+        with open(log_file, 'w') as f:
+            f.write("total: %s\n" % len(list_file))
+            f.write("recognized: %s\n" % reg)
+            f.write("unrecognized: %s\n" % unreg)
+            f.write("==================")
+            f.write('\n\n')
     bar = tqdm(total=len(list_file))
     for i in list_file:
         do_mkdir = False
@@ -139,9 +140,10 @@ def run(dry):
         if do_move:
             todo += i.author
         msg = re.sub('@TODO_REPLACE@', todo_replace, todo)
-        with open(log_file, 'a') as f:
-            f.write(msg)
-            f.write('\n')
+        if not dry:
+            with open(log_file, 'a') as f:
+                f.write(msg)
+                f.write('\n')
         bar.clear()
         print(msg)
         bar.display()
