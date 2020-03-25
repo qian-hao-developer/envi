@@ -5,3 +5,9 @@ theme:
     https://github.com/horst3180/arc-theme
 3. python version manage (pyenv)
     https://github.com/pyenv/pyenv
+4. linuxbrew
+    https://docs.brew.sh/Homebrew-on-Linux
+5. fzf
+    https://github.com/junegunn/fzf
+6. fd
+    https://github.com/sharkdp/fd
