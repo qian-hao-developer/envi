@@ -1,0 +1,27 @@
+exa         # replacement of ls
+            https://github.com/ogham/exa
+
+bat         # replacement of cat
+            https://github.com/sharkdp/bat
+
+hexyl       # replacement of od/hexdump
+            https://github.com/sharkdp/hexyl
+
+fd          # replacement of find
+            https://github.com/sharkdp/fd
+
+procs       # replacement of ps
+            https://github.com/dalance/procs
+
+rg          # ripgrep
+            https://github.com/BurntSushi/ripgrep
+
+hyperfine   # benchmark tool (test time)
+            https://github.com/sharkdp/hyperfine
+
+pastel      # generate colors
+            https://github.com/sharkdp/pastel
+
+fzf         # replacement of peco
+            https://github.com/junegunn/fzf
+
