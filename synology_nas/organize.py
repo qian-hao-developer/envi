@@ -5,6 +5,7 @@ from tqdm import tqdm
 DEBUG = False
 
 COLLECTION_ROOT = "/volume1/collection"
+COMIC_TRANSFER = COLLECTION_ROOT + "/transfer"
 COMIC_ROOT = COLLECTION_ROOT + "/comic"
 COMIC_DATA = ".."
 COMIC_BACKUP = os.path.join(COMIC_DATA, "backup")
@@ -32,6 +33,10 @@ class FILE:
         print("author : %s" % self.author)
         print("status : %s" % self.status)
 
+# check python library that whether module is installed
+# return:
+#   True  : installed
+#   False : not installed
 def check_lib(target):
     try:
         imp.find_module(target)
@@ -39,24 +44,23 @@ def check_lib(target):
     except ImportError:
         return False
 
-def update_dirs():
-    global COMIC_ROOT
-    dir = [d for d in os.listdir(COMIC_ROOT) if os.path.isdir(os.path.join(COMIC_ROOT, d))]
-    for d in dir:
-        print(d)
-    return dir
-
+# collect info of file which to transfer
+# print unrecognized files as well
+# info will be written into global variable "list_file"
+# return:
+#   reg   : recognized file number
+#   unreg : unrecognized file number
 def prepare_file_info():
-    global COMIC_ROOT
-    if not os.path.isdir(COMIC_ROOT):
-        print("[ERROR]: root path not exist, path = %s" % COMIC_ROOT)
+    global COMIC_TRANSFER
+    if not os.path.isdir(COMIC_TRANSFER):
+        print("[ERROR]: root path not exist, path = %s" % COMIC_TRANSFER)
         print("[ERROR]: exit")
         sys.exit(1)
     reg = 0
     unreg = 0
-    file_list = [f for f in os.listdir(COMIC_ROOT) if os.path.isfile(os.path.join(COMIC_ROOT, f))]
+    file_list = [f for f in os.listdir(COMIC_TRANSFER) if os.path.isfile(os.path.join(COMIC_TRANSFER, f))]
     for f in file_list:
-        ff = FILE(f, "%s/%s" % (COMIC_ROOT, f))
+        ff = FILE(f, "%s/%s" % (COMIC_TRANSFER, f))
         m = re.search(r'\[([^\[]*)\]', f)
         if m:
             ff.author = m.group(1)
@@ -81,8 +85,12 @@ def prepare_file_info():
     print("######")
     return reg, unreg
 
+# transfer files in list
+# arg(dry) :
+#   True  : dry run
+#   False : real run
 def run(dry):
-    global DEBUG, COMIC_ROOT, COMIC_BACKUP
+    global DEBUG, COMIC_TRANSFER, COMIC_ROOT, COMIC_BACKUP
     def append_status(org, str):
         if not org:
             org += str
@@ -126,7 +134,7 @@ def run(dry):
             do_mkdir = True
         if os.path.isfile(os.path.join(COMIC_ROOT, i.author, i.file_name)):
             org_file_size = os.path.getsize(os.path.join(COMIC_ROOT, i.author, i.file_name))
-            cur_file_size = os.path.getsize(os.path.join(COMIC_ROOT, i.file_name))
+            cur_file_size = os.path.getsize(os.path.join(COMIC_TRANSFER, i.file_name))
             if cur_file_size > org_file_size:
                 todo_replace = append_status(todo_replace, "OVERRIDE")
                 backup_org = True
@@ -175,7 +183,7 @@ def run(dry):
             if backup_cur:
                 if DEBUG:
                     print("[DEBUG]: backup cur")
-                shutil.move(os.path.join(COMIC_ROOT, i.file_name), os.path.join(COMIC_ROOT, COMIC_BACKUP, i.file_name))
+                shutil.move(os.path.join(COMIC_TRANSFER, i.file_name), os.path.join(COMIC_ROOT, COMIC_BACKUP, i.file_name))
             elif backup_org:
                 if DEBUG:
                     print("[DEBUG]: backup org")
@@ -183,7 +191,7 @@ def run(dry):
         if do_move:
             if DEBUG:
                 print("[DEBUG]: do move")
-            shutil.move(os.path.join(COMIC_ROOT, i.file_name), os.path.join(COMIC_ROOT, i.author, i.file_name))
+            shutil.move(os.path.join(COMIC_TRANSFER, i.file_name), os.path.join(COMIC_ROOT, i.author, i.file_name))
         bar.update(1)
     bar.clear()
     print("================== OVER ==================")
