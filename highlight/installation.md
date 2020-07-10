@@ -1,5 +1,7 @@
+http://www.andre-simon.de/doku/highlight/en/install.php
+
 dependencies:
-1. sudo apt install lua5.3-dev
+1. sudo apt install liblua5.3-dev
 2. sudo apt install libboost-all-dev
 
 1. tar xjf highlight-x.x-x.tar.bz2
