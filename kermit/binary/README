@@ -1,0 +1,7 @@
+Kermit project has been cancelled since 2011? and has no furture updates since that.
+It is no more supported / supplied since Ubuntu 20.04 ~
+
+This folder holds binary and shared libs (use ldd to check).
+
+Copy libs following directories' structure,
+And use kermit binary directly.
