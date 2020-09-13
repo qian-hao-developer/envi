@@ -1,0 +1,14 @@
+Terminus:
+    https://eugeny.github.io/terminus/
+
+Setting:
+    1. Color Scheme
+        Gruvbox Dark
+    2. Plugins
+        Install:
+            - theme-gruvbox
+            - save-output
+    3. Application
+        Theme set to Gruvbox (installed by plugins)
+    4. Appearance
+        Font set to [11]
