@@ -89,6 +89,13 @@
     https://github.com/erikw/tmux-powerline.git
     上記clone後、.tmux.conf内のパスを修正する
 
+* tmux-plugin
+    tpmをインストールする
+        https://github.com/tmux-plugins/tpm
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    tmux上で以下を実施して.tmux.conf記載のPluginをインストールする
+        prefix(ctrl-B) + I
+
 * SSH接続用鍵の登録
     cp workstation/ssh/* ~/.ssh/
     Windows側のSSHキーはref-windowsのは以下に配置している
