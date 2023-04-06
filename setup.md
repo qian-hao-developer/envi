@@ -104,7 +104,22 @@
 
 * SSH接続用鍵の登録
     cp workstation/ssh/* ~/.ssh/
-    Windows側のSSHキーはref-windowsのは以下に配置している
+    Windows側のSSHキーはref-windows以下に配置している
+    新規セットアップ時は以下を参考：
+        sshキーを作成
+            ssh-keygen -t rsa -b 4096
+            windows用に命名する
+        WindowsのC:/Users/XXX/.ssh配下にコピー
+        Windowsの上記場所にconfigファイルを新規作成
+            Host <ssh name>
+                HostName <ip address or host name>
+                User <user for ssh>
+                IdentityFile ~/.ssh/<ssh private key name>
+                [Port <port setting if needed>]
+        Linux側に上記のpubキーを転送
+            cat <pub key> >> ~/.ssh/authorized_keys
+        Windows上は以下のようにSSH接続が可能
+            ssh.exe <user name>@<ssh name>
 
 * [apt] samba
     sudo apt install samba
