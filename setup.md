@@ -10,8 +10,11 @@
     sudo apt install openssh-server
 
 * fstabを設定
+    sudo mkdir /media/xx
+    sudo chmod 777 /media/xx
+    sudo chown root:root /media/xx
     sudo vi /etc/fstab
-        UUID=<id> /media/ssd ext4 defaults 0 0
+        UUID=<id> /media/xx ext4 defaults 0 0
     注意：defaultではなく、defaults
 
 * workstationをclone
@@ -53,6 +56,7 @@
             source /media/ssd/workstation/env/static/.bashrc
         fi
     powerline-shellなどがpipでインストールする必要があるため、現時点でbrewが使えるようになるが、表示が変(気にせず)
+    pyenvを利用しない場合、workstation内のpyenv初期化部分をコメントアウト
 
 * [apt] gccなどビルド環境
     sudo apt install build-essential
@@ -77,9 +81,11 @@
     configを適用
         https://github.com/qian-hao-developer/envi/tree/master/powerline-shell
         上記にあるconfig配下のpowerline-shellを、~/.config/にコピーする
+    fontインストール on Windows (https://github.com/powerline/fonts.git   DejaVu Sans Mono for Powerline.ttf)
 
 * [brew] packages
     https://github.com/qian-hao-developer/envi/blob/master/brew/listを参考
+    ※tmuxもここでインストールされる
 
 * [apt] source-highlight
     bashrc内にsourceが必要
@@ -87,7 +93,7 @@
 
 * tmux-powerline
     https://github.com/erikw/tmux-powerline.git
-    上記clone後、.tmux.conf内のパスを修正する
+    上記clone後、.tmux.conf及び.tmux-powerlinerc内のパスを修正する
 
 * tmux-plugin
     tpmをインストールする
