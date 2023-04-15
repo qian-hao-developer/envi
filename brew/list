@@ -27,3 +27,4 @@ pastel      # generate colors
 fzf         # replacement of peco
             https://github.com/junegunn/fzf
 
+ncdu        # advanced du command
