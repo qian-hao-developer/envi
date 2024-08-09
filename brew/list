@@ -31,3 +31,11 @@ ncdu        # advanced du command
 
 git-delta   # a syntax-highlighting pager for git, diff, grep, and blame output
             https://github.com/dandavison/delta
+
+btop        # resource monitor (c++ ver)
+            https://github.com/aristocratos/btop
+            # see also
+            bashtop (original ver, can't install by package manager)
+            https://github.com/aristocratos/bashtop
+            bpytop (python ver)
+            https://github.com/aristocratos/bpytop
