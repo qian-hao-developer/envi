@@ -1,3 +1,13 @@
+# install powerline font
+1. download fonts from below
+   https://github.com/powerline/fonts
+2. install below:
+   DejaVuSansMono: DejaVu Sans Mono for Powerline.ttf
+3. set font of profile ([default] or [Windows PowerShell]) to
+   DejaVu Sans Mono for Powerline
+4. set font size to
+   7 ~ 9 (depends on what hardware)
+
 # package management
 1.  install Scoop *recommend
     which is easy to install and uninstall (more clean env)
