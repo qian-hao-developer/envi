@@ -1,0 +1,13 @@
+- KeePassXC
+  Password Management
+- Tablacus Explorer
+- Total Commander
+- Free Download Manager
+- HWiNFO64
+- Brave
+- Tor
+- iMazing
+- PotPlayer
+- Honeyview
+- Synergy
+- Dropbox
