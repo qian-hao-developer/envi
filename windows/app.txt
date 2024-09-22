@@ -11,3 +11,10 @@
 - Honeyview
 - Synergy
 - Dropbox
+- Chrome
+  - Extends
+    - EditThisCookie
+    - Free Download Manager Extension
+    - Seedr
+    - Adblock Plus
+    - KeePassXC Browser
