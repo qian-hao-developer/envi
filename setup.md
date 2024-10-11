@@ -14,8 +14,9 @@
     sudo chmod 777 /media/xx
     sudo chown root:root /media/xx
     sudo vi /etc/fstab
-        UUID=<id> /media/xx ext4 defaults 0 0
+        UUID=<id> /media/xx ext4 defaults 0 2
     注意：defaultではなく、defaults
+          最後の<pass>行の0は起動時正常性チェックしない、1は高優先度、2は1より低優先度
 
 * workstationをclone
     https://github.com/qian-hao-developer/workstation.git
