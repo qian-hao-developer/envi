@@ -1,7 +1,8 @@
 tmux
 
-exa         # replacement of ls
+# exa         # replacement of ls
             https://github.com/ogham/exa
+            EOL
 
 bat         # replacement of cat
             https://github.com/sharkdp/bat
@@ -42,3 +43,6 @@ btop        # resource monitor (c++ ver)
 
 tio         # serial terminal
             https://github.com/tio/tio
+
+lf          # list files (file manager browser)
+            https://github.com/gokcehan/lf?tab=readme-ov-file

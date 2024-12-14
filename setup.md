@@ -142,3 +142,19 @@
 
 * [apt] fastboot & adb
     sudo apt install fastboot adb
+
+
+* [brew] zsh
+    brew install zsh
+
+* [curl] zinit
+    https://github.com/zdharma-continuum/zinit
+    bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+
+* [curl] oh-my-zsh (not use anymore)
+    https://ohmyz.sh/#install
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    REPLACED WITH ZINIT
+
+* workstationのセットアップ
+    <path_to_workstation>/setup.sh
