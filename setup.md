@@ -39,6 +39,10 @@
         上記にあるconfig配下のpowerline-shellを、~/.config/にコピーする
     fontインストール on Windows (https://github.com/powerline/fonts.git   DejaVu Sans Mono for Powerline.ttf)
 
+    [error: externally-managed-environment]が発生する場合、以下に変わる (python3.12バージョンから)
+    sudo apt install pipx
+    pipx install powerline-shell
+
 * brew
     https://brew.sh/
     インストール後、bashrc上PATHを設定しないと使えないが、後述環境ファイルのリンク後に設定する
