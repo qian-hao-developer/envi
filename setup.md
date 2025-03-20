@@ -64,7 +64,7 @@
 
 * tmux-powerline
     https://github.com/erikw/tmux-powerline.git
-    上記clone後、.tmux.conf及び.tmux-powerlinerc内のパスを修正する
+    [Deprecated] 上記clone後、.tmux.conf及び.tmux-powerlinerc内のパスを修正する -> tmux-pluginとしてインストールしたため不要となった
 
 * workstationをclone
     https://github.com/qian-hao-developer/workstation.git
