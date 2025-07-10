@@ -174,3 +174,16 @@
 
 * [apt] fastboot & adb
     sudo apt install fastboot adb
+
+* swap
+    永久
+      sudo swapoff /swapfile
+      sudo fallocate -l 64G /swapfile
+      sudo mkswap /swapfile
+      sudo swapon /swapfile
+      sudo swapon -s
+      free -h
+    一時的
+      sudo fallocate -l 64G /swapfile_tmp
+      sudo mkswap /swapfile_tmp
+      sudo swapon /swapfile_tmp
