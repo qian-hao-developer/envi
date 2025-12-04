@@ -46,3 +46,10 @@ tio         # serial terminal
 
 lf          # list files (file manager browser)
             https://github.com/gokcehan/lf?tab=readme-ov-file
+
+lazygit     # git layout cui
+            https://github.com/jesseduffield/lazygit
+
+yazi        # file manager (popularer than lf)
+            https://github.com/sxyazi/yazi
+
