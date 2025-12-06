@@ -54,4 +54,5 @@ yazi        # file manager (popularer than lf)
             https://github.com/sxyazi/yazi
 
 xclip       # clipboard tool
+            # optional as to use this tool, x window should be enabled (usually it's not via ssh)
 
