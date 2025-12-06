@@ -52,6 +52,9 @@ lazygit     # git layout cui
 
 yazi        # file manager (popularer than lf)
             https://github.com/sxyazi/yazi
+            # some dependencies need to be installed too (see doc)
+            brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick font-symbols-only-nerd-font
+            https://yazi-rs.github.io/docs/installation/#homebrew
 
 xclip       # clipboard tool
             # optional as to use this tool, x window should be enabled (usually it's not via ssh)
