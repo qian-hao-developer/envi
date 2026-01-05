@@ -59,3 +59,5 @@ yazi        # file manager (popularer than lf)
 xclip       # clipboard tool
             # optional as to use this tool, x window should be enabled (usually it's not via ssh)
 
+lazydocker  # monitor docker containers
+            https://github.com/jesseduffield/lazydocker
