@@ -187,3 +187,15 @@
       sudo fallocate -l 64G /swapfile_tmp
       sudo mkswap /swapfile_tmp
       sudo swapon /swapfile_tmp
+    btrfs上だったら：
+      sudo swapoff /swapfile 2>/dev/null
+      sudo rm /swapfile
+      sudo truncate -s 0 /swapfile
+      sudo chattr +C /swapfile
+      sudo fallocate -l 128G /swapfile
+      sudo chmod 0600 /swapfile
+      sudo mkswap /swapfile
+      sudo swapon /swapfile
+      Btrfsのデフォルト設定（CoW有効）では、ファイルが物理的にバラバラの場所に保存される可能性があり、
+      カーネルがスワップとして読み書きできないため Invalid argument が返されます。
+      chattr +C を行うことで、物理配置を固定し、スワップとして利用可能になります。
