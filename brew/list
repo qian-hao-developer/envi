@@ -61,3 +61,6 @@ xclip       # clipboard tool
 
 lazydocker  # monitor docker containers
             https://github.com/jesseduffield/lazydocker
+
+bandwhich   # network download/upload monitor
+            https://github.com/imsnif/bandwhich
